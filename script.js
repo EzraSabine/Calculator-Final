@@ -2,6 +2,7 @@
 const display = document.getElementById('calc-disp');
 const btns = document.getElementsByClassName('buttons');
 const clear = document.getElementById('C');
+const numbers = document.getElementById('numbDisplay');
 let numbArray = [];
 let numbString;
 
@@ -10,13 +11,13 @@ for (const buttons of btns) {
     buttons.addEventListener('click', function() {
         numbArray.push(buttons.innerHTML);
         numbString = numbArray.join('');
-        display.innerHTML = numbString;
+        numbers.innerHTML = numbString;
     });
 }
 
 
 clear.addEventListener('click', function() {
-    display.innerHTML = '';
+    numbers.innerHTML = '';
     numbArray.length = 0;
 });
 
