@@ -8,12 +8,24 @@ let numbString;
 
 
 for (const buttons of btns) {
-    buttons.addEventListener('click', function() {
+    buttons.addEventListener('click', function () {
         numbArray.push(buttons.innerHTML);
         numbString = numbArray.join('');
-        numbers.innerHTML = numbString;
+
+        if (numbString.length <= 12) {
+            numbers.innerHTML = numbString;
+        }
+        else {
+            numbString = numbString.substring(0, 12);
+            numbers.innerHTML = numbString;
+            console.log(numbString);
+        }
+
     });
 }
+
+
+
 
 
 clear.addEventListener('click', function() {
@@ -47,3 +59,11 @@ function divideNumbers(a,b) {
 
 
 
+//if(str.length > 10) str = str.substring(0,10);
+
+
+// Type in number and has limit to how many times, so numbers fit in diplay
+// When you click an operator it removes eventListener from all buttons
+// Ability to type in second string of numbers 
+// function takes two the two strings of numbers and calculates them based on chosen operator, once = is clicked.
+// prints final string onto display
