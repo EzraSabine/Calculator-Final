@@ -4,6 +4,7 @@ const btns = document.getElementsByClassName('buttons');
 const clear = document.getElementById('C');
 const numbers = document.getElementById('numbDisplay');
 const operatorDisplay = document.getElementById('operatorDisplay');
+const numbersTwo = document.getElementById('numbTwoDisplay');
 const operators = document.querySelectorAll('.operators');
 const calculate = document.getElementById('calculate');
 
@@ -23,6 +24,26 @@ let numbStringThree;
 
 
 
+// LOOP AND NAMED FUNCTION FOR CONCATENATING NUMBERS ONTO DISPLAY
+for (const buttons of btns) {
+    buttons.addEventListener('click', concatFirstNumbers);
+}
+
+function concatFirstNumbers() {
+    numbArrayOne.push(this.innerHTML);//-----------"THIS" is a game changer!
+    numbStringOne = numbArrayOne.join('');
+
+    if (numbStringOne.length <= 12) {
+        numbers.innerHTML = numbStringOne;
+    }
+    else {
+        numbStringOne = numbStringOne.substring(0, 12);
+        numbers.innerHTML = numbStringOne;
+        console.log(numbStringOne);
+    }
+    
+}
+/* RE-USE THIS IF NAMED FUNCTION DOESNT WORK.----------------
 // LOOP AND FUNCTION FOR CONCATENATING NUMBERS ONTO DISPLAY
 for (const buttons of btns) {
     buttons.addEventListener('click', function () {
@@ -40,21 +61,34 @@ for (const buttons of btns) {
 
     });
 }
-//----------------------------------------------------------
+//------------------------------------------------------------
+*/
 
 
 
-// CLEAR BUTTON EVENT LISTENER FUNCTION----------
-clear.addEventListener('click', clearDisplay);
+/*
 
-function clearDisplay() {
-    numbers.innerHTML = '';
-    numbArrayOne.length = 0;
-    operatorDisplay.innerHTML = '';
-    numbArrayTwo.length = 0;
-    numbers.style.display = "inline";
+//   LOOP AND FUNCTION FOR CONCATENATING SECOND NUMBERS ONTO DISPLAY
+for (const buttons of btns) {
+    buttons.addEventListener('click', function () {
+        numbArrayThree.push(buttons.innerHTML);
+        numbStringThree = numbArrayThree.join('');
+        operatorDisplay.style.display = "none";
+
+        if (numbStringThree.length <= 12) {
+            numbersTwo.innerHTML = numbStringThree;
+        }
+        else {
+            numbStringThree = numbStringThree.substring(0, 12);
+            numbersTwo.innerHTML = numbStringThree;
+            console.log(numbStringThree);
+        }
+
+    });
 }
-//----------------------------------------------
+//-------------------------------------------------------------
+*/
+
 
 
 
@@ -63,20 +97,40 @@ function clearDisplay() {
 
 // LOOP AND FUNCTION FOR OPERATORS ONTO DISPLAY, REMOVES FIRST SET OF NUMBERS FROM DISPLAY AND PROHIBITS CLICK OF ANOTHER OPERATOR OR NUMBER
 operators.forEach(item => {
-    item.addEventListener('click', function() {
-    numbArrayTwo.push(item.innerHTML);
-    numbStringTwo = numbArrayTwo.join('');
-    operatorDisplay.innerHTML = numbStringTwo;
-    numbers.style.display = "none";
-    console.log(numbStringTwo);
+    item.addEventListener('click', function () {
+        numbArrayTwo.push(item.innerHTML);
+        numbStringTwo = numbArrayTwo.join('');
+        operatorDisplay.innerHTML = numbStringTwo;
+        numbers.style.display = "none";
+        console.log(numbStringTwo);
+    });
 });
-});
-        
-
-    
-       
-
 //----------------------------------------------------
+
+
+
+
+
+
+
+
+
+// CLEAR BUTTON EVENT LISTENER FUNCTION----------
+clear.addEventListener('click', clearDisplay);
+
+function clearDisplay() {
+    numbers.innerHTML = '';
+    numbersTwo.innerHTML = '';
+    operatorDisplay.innerHTML = '';
+    numbArrayOne.length = 0;
+    numbArrayTwo.length = 0;
+    numbArrayThree.length = 0;
+    numbers.style.display = "inline";
+    numbersTwo.style.display = "inline";
+}
+//----------------------------------------------
+
+
 
 
 

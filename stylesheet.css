@@ -30,7 +30,7 @@ h1 {
     outline: 5px solid gray;
 }
 
-#numbDisplay, #operatorDisplay {
+#numbDisplay, #operatorDisplay, #numbTwoDisplay {
     margin: 0;
     margin-top: 35px;
     margin-right: 5px;
