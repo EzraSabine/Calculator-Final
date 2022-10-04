@@ -21,6 +21,13 @@ let numbStringThree;
 
 
 
+// THIS FUNCTION MAKES OPERATORS UNCLICKABLE WHEN THE BODY OF THE CALCULATOR PAGE IS LOADED. 
+function onlyNumbers() {
+    operators.forEach(item => {
+        item.removeEventListener('click', concatOperators);
+    });
+}
+//-----------------------------------------------------------
 
 
 
@@ -41,8 +48,12 @@ function concatFirstNumbers() {
         numbers.innerHTML = numbStringOne;
         console.log(numbStringOne);
     }
-    
-}
+
+    operators.forEach(item => {
+        item.addEventListener('click', concatOperators);//-------TURNS OPERATOR BUTTONS BACK ON ONCE A NUMBER IS CLICKED. 
+    });
+
+    }
 /* RE-USE THIS IF NAMED FUNCTION DOESNT WORK.----------------
 // LOOP AND FUNCTION FOR CONCATENATING NUMBERS ONTO DISPLAY
 for (const buttons of btns) {
@@ -68,6 +79,7 @@ for (const buttons of btns) {
 
 
 // LOOP AND FUNCTION FOR OPERATORS ONTO DISPLAY, REMOVES FIRST SET OF NUMBERS FROM DISPLAY AND PROHIBITS CLICK OF ANOTHER OPERATOR OR NUMBER
+
 operators.forEach(item => {
     item.addEventListener('click', concatOperators);
 });
@@ -86,6 +98,7 @@ function concatOperators() {
 
 
 
+
 //----------------------------------------------------
 
 
@@ -98,8 +111,9 @@ clear.addEventListener('click', clearDisplay);
 
 function clearDisplay() {
     operators.forEach(item => {
-        item.addEventListener('click', concatOperators);
+        item.removeEventListener('click', concatOperators);
     });
+
 
     numbers.innerHTML = '';
     numbersTwo.innerHTML = '';
