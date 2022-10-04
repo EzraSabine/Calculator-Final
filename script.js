@@ -66,49 +66,27 @@ for (const buttons of btns) {
 
 
 
-/*
-
-//   LOOP AND FUNCTION FOR CONCATENATING SECOND NUMBERS ONTO DISPLAY
-for (const buttons of btns) {
-    buttons.addEventListener('click', function () {
-        numbArrayThree.push(buttons.innerHTML);
-        numbStringThree = numbArrayThree.join('');
-        operatorDisplay.style.display = "none";
-
-        if (numbStringThree.length <= 12) {
-            numbersTwo.innerHTML = numbStringThree;
-        }
-        else {
-            numbStringThree = numbStringThree.substring(0, 12);
-            numbersTwo.innerHTML = numbStringThree;
-            console.log(numbStringThree);
-        }
-
-    });
-}
-//-------------------------------------------------------------
-*/
-
-
-
-
-
-
 
 // LOOP AND FUNCTION FOR OPERATORS ONTO DISPLAY, REMOVES FIRST SET OF NUMBERS FROM DISPLAY AND PROHIBITS CLICK OF ANOTHER OPERATOR OR NUMBER
 operators.forEach(item => {
-    item.addEventListener('click', function () {
-        numbArrayTwo.push(item.innerHTML);
-        numbStringTwo = numbArrayTwo.join('');
-        operatorDisplay.innerHTML = numbStringTwo;
-        numbers.style.display = "none";
-        console.log(numbStringTwo);
-    });
+    item.addEventListener('click', concatOperators);
 });
+
+function concatOperators() {
+    numbArrayTwo.push(this.innerHTML);
+    numbStringTwo = numbArrayTwo.join('');
+    operatorDisplay.innerHTML = numbStringTwo;
+    numbers.style.display = "none";
+    console.log(numbStringTwo);
+
+    operators.forEach(item => {
+        item.removeEventListener('click', concatOperators);
+    });
+}
+
+
+
 //----------------------------------------------------
-
-
-
 
 
 
@@ -119,6 +97,10 @@ operators.forEach(item => {
 clear.addEventListener('click', clearDisplay);
 
 function clearDisplay() {
+    operators.forEach(item => {
+        item.addEventListener('click', concatOperators);
+    });
+
     numbers.innerHTML = '';
     numbersTwo.innerHTML = '';
     operatorDisplay.innerHTML = '';
@@ -163,7 +145,7 @@ function divideNumbers(a,b) {
 
 
 // Type in number and has limit to how many times, so numbers fit in diplay -----FINISHED
-// When you click an operator it removes eventListener from all buttons
+// When you click an operator it removes eventListener from all other operators -------FINISHED
 // Ability to type in second string of numbers 
 // function takes two the two strings of numbers and calculates them based on chosen operator, once = is clicked.
 // prints final string onto display
