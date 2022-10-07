@@ -16,7 +16,7 @@ let numbStringTwo;
 
 let numbArrayThree = [];
 let numbStringThree;
-//------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------
 
 
 
@@ -27,7 +27,7 @@ function onlyNumbers() {
         item.removeEventListener('click', concatOperators);
     });
 }
-//-----------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -46,7 +46,6 @@ function concatFirstNumbers() {
     else {
         numbStringOne = numbStringOne.substring(0, 12);
         numbers.innerHTML = numbStringOne;
-        console.log(numbStringOne);
     }
 
     operators.forEach(item => {
@@ -54,32 +53,11 @@ function concatFirstNumbers() {
     });
 
     }
-/* RE-USE THIS IF NAMED FUNCTION DOESNT WORK.----------------
-// LOOP AND FUNCTION FOR CONCATENATING NUMBERS ONTO DISPLAY
-for (const buttons of btns) {
-    buttons.addEventListener('click', function () {
-        numbArrayOne.push(buttons.innerHTML);
-        numbStringOne = numbArrayOne.join('');
-
-        if (numbStringOne.length <= 12) {
-            numbers.innerHTML = numbStringOne;
-        }
-        else {
-            numbStringOne = numbStringOne.substring(0, 12);
-            numbers.innerHTML = numbStringOne;
-            console.log(numbStringOne);
-        }
-
-    });
-}
-//------------------------------------------------------------
-*/
-
+//--------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 // LOOP AND FUNCTION FOR OPERATORS ONTO DISPLAY, REMOVES FIRST SET OF NUMBERS FROM DISPLAY AND PROHIBITS CLICK OF ANOTHER OPERATOR OR NUMBER
-
 operators.forEach(item => {
     item.addEventListener('click', concatOperators);
 });
@@ -92,21 +70,54 @@ function concatOperators() {
     console.log(numbStringTwo);
 
     operators.forEach(item => {
-        item.removeEventListener('click', concatOperators);
+        item.removeEventListener('click', concatOperators);//------Something is wrong here 1 or.....
     });
+
+    for (const buttons of btns) {
+        buttons.removeEventListener('click', concatFirstNumbers);
+    }
+
+
+    groupTwo();
+
+}
+//-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+// LOOP AND NAMED FUNCTION FOR CONCATENATING 2ND GROUP OF NUMBERS ONTO DISPLAY
+function groupTwo() {
+for (const buttons of btns) {
+    buttons.addEventListener('click', concatSecondNumbers);
+}
+concatSecondNumbers();
+
 }
 
+function concatSecondNumbers() {
+    numbArrayThree.push(this.innerHTML);
+    numbStringThree = numbArrayThree.join('');
+
+    if (numbStringThree.length <= 12) {
+        numbersTwo.innerHTML = numbStringThree;
+    }
+    else {
+        numbStringThree = numbStringThree.substring(0, 12);
+        numbersTwo.innerHTML = numbStringThree;
+    }
+
+    //operatorDisplay.style.display = "none"; -----Something is wrong here 2
+    
+}
+//---------------------------------------------------------------------------------------------------------------------------------
 
 
 
-//----------------------------------------------------
 
 
 
-
-
-
-// CLEAR BUTTON EVENT LISTENER FUNCTION----------
+// CLEAR BUTTON EVENT LISTENER FUNCTION
 clear.addEventListener('click', clearDisplay);
 
 function clearDisplay() {
@@ -114,6 +125,16 @@ function clearDisplay() {
         item.removeEventListener('click', concatOperators);
     });
 
+    for (const buttons of btns) {
+        buttons.addEventListener('click', concatFirstNumbers);
+    }
+
+    for (const buttons of btns) {
+        buttons.removeEventListener('click', concatSecondNumbers);
+    }
+    
+
+   
 
     numbers.innerHTML = '';
     numbersTwo.innerHTML = '';
@@ -124,7 +145,7 @@ function clearDisplay() {
     numbers.style.display = "inline";
     numbersTwo.style.display = "inline";
 }
-//----------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -163,3 +184,29 @@ function divideNumbers(a,b) {
 // Ability to type in second string of numbers 
 // function takes two the two strings of numbers and calculates them based on chosen operator, once = is clicked.
 // prints final string onto display
+
+
+
+
+
+
+/* RE-USE THIS IF NAMED FUNCTION DOESNT WORK.----------------
+// LOOP AND FUNCTION FOR CONCATENATING NUMBERS ONTO DISPLAY
+for (const buttons of btns) {
+    buttons.addEventListener('click', function () {
+        numbArrayOne.push(buttons.innerHTML);
+        numbStringOne = numbArrayOne.join('');
+
+        if (numbStringOne.length <= 12) {
+            numbers.innerHTML = numbStringOne;
+        }
+        else {
+            numbStringOne = numbStringOne.substring(0, 12);
+            numbers.innerHTML = numbStringOne;
+            console.log(numbStringOne);
+        }
+
+    });
+}
+//------------------------------------------------------------
+*/
