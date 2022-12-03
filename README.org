@@ -1,0 +1,21 @@
+* Web Calculator
+
+  [[./assets/images/example.png]]
+
+** Usage
+
+   Open [[./index.html]] in a web browser
+
+** Source
+
+*** HTML
+
+    [[./index.html]]
+
+*** JS
+
+    [[./script.js]]
+
+*** CSS
+
+    [[./stylesheet.css]]
