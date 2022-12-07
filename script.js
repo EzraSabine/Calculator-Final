@@ -24,7 +24,7 @@ let numbStringThree;
 // THIS FUNCTION MAKES OPERATORS UNCLICKABLE WHEN THE BODY OF THE CALCULATOR PAGE IS LOADED. 
 function onlyNumbers() {
     operators.forEach(item => {
-        item.removeEventListener('click', concatOperators);
+        item.removeEventListener('click', concatOperators);  //-----This shouldn't matter as there the operator class if different from the buttons.
     });
 }
 //------------------------------------------------------------------------------------------------------------------
