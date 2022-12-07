@@ -143,6 +143,7 @@ function clearDisplay() {
     numbArrayThree.length = 0;
     numbers.style.display = "inline";
     numbersTwo.style.display = "inline";
+    operatorDisplay.style.display = "inline";
 }
 //----------------------------------------------------------------------------------------------------------------------
 
