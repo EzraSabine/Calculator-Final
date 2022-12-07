@@ -91,13 +91,12 @@ function groupTwo() {
 for (const buttons of btns) {
     buttons.addEventListener('click', concatSecondNumbers);
 }
-concatSecondNumbers();
-
 }
 
 function concatSecondNumbers() {
     numbArrayThree.push(this.innerHTML);
     numbStringThree = numbArrayThree.join('');
+    operatorDisplay.style.display = "none";
 
     if (numbStringThree.length <= 12) {
         numbersTwo.innerHTML = numbStringThree;
@@ -107,7 +106,7 @@ function concatSecondNumbers() {
         numbersTwo.innerHTML = numbStringThree;
     }
 
-    //operatorDisplay.style.display = "none"; -----Something is wrong here 2
+    
     
 }
 //---------------------------------------------------------------------------------------------------------------------------------
