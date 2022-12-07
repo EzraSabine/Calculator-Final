@@ -5,8 +5,9 @@ const clear = document.getElementById('C');
 const numbers = document.getElementById('numbDisplay');
 const operatorDisplay = document.getElementById('operatorDisplay');
 const numbersTwo = document.getElementById('numbTwoDisplay');
+const answer = document.getElementById('answerDisplay');
 const operators = document.querySelectorAll('.operators');
-const calculate = document.getElementById('calculate');
+const operate = document.getElementById('operate');
 
 let numbArrayOne = [];
 let numbStringOne;
@@ -151,28 +152,36 @@ function clearDisplay() {
 
 
 
-
-
-
-
-
-
-
 //------------------------------------------------------
 // MATH BELOW
 
-function addNumbers(a,b) {
-    return numbStringOne + numbStringThree;
+
+
+
+operate.addEventListener('click', displayAnswer);
+
+function displayAnswer(a, b) {
+    a = Number(numbStringOne);
+    b = Number(numbStringThree);
+    let operatorSymbol = numbStringTwo;
+
+    if (operatorSymbol = '+') {
+        console.log(a + b);
+    }
 }
-function subtractNumbers(a,b) {
-    return a - b;
-}
-function multiplyNumbers(a,b) {
-    return a * b;
-}
-function divideNumbers(a,b) {
-    return a / b;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -181,8 +190,8 @@ function divideNumbers(a,b) {
 
 // Type in number and has limit to how many times, so numbers fit in diplay -----FINISHED
 // When you click an operator it removes eventListener from all other operators -------FINISHED
-// Ability to type in second string of numbers 
-// function takes two the two strings of numbers and calculates them based on chosen operator, once = is clicked.
+// Ability to type in second string of numbers ------FINISHED
+// function takes the two strings of numbers and calculates them based on chosen operator, once = is clicked.
 // prints final string onto display
 
 
