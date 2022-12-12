@@ -14,6 +14,7 @@ let numbStringOne;
 
 let numbArrayTwo = [];
 let numbStringTwo;
+let operatorSymbol;
 
 let numbArrayThree = [];
 let numbStringThree;
@@ -68,7 +69,8 @@ function concatOperators() {
     numbStringTwo = numbArrayTwo.join('');
     operatorDisplay.innerHTML = numbStringTwo;
     numbers.style.display = "none";
-    console.log(numbStringTwo);
+    operatorSymbol = numbStringTwo;//----I might have fixed the operate if/else statement with adding this line here and declaring operatorSymbol up top.
+
 
     operators.forEach(item => {
         item.removeEventListener('click', concatOperators);//------Something is wrong here 1 or.....
@@ -157,18 +159,27 @@ function clearDisplay() {
 
 
 
-
+//-------------------------------------------------- operatorSymbol changes it's string value to the first if statement once you click the equals sign....
 operate.addEventListener('click', displayAnswer);
+
+
 
 function displayAnswer(a, b) {
     a = Number(numbStringOne);
     b = Number(numbStringThree);
-    let operatorSymbol = numbStringTwo;
-
-    if (operatorSymbol = '+') {
+    
+    if (operatorSymbol == " + ") {
         console.log(a + b);
+    }else if (operatorSymbol == " - ") {
+        console.log(a - b);
+    }else if (operatorSymbol == " x ") {
+        console.log(a * b);
+    }else if (operatorSymbol == " / ") {
+        console.log(a / b);
     }
+
 }
+
 
 
 
@@ -193,9 +204,6 @@ function displayAnswer(a, b) {
 // Ability to type in second string of numbers ------FINISHED
 // function takes the two strings of numbers and calculates them based on chosen operator, once = is clicked.
 // prints final string onto display
-
-
-
 
 
 
