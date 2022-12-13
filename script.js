@@ -141,12 +141,15 @@ function clearDisplay() {
     numbers.innerHTML = '';
     numbersTwo.innerHTML = '';
     operatorDisplay.innerHTML = '';
+    answer.innerHTML = '';
     numbArrayOne.length = 0;
     numbArrayTwo.length = 0;
     numbArrayThree.length = 0;
+    finalAnswer.length = 0;
     numbers.style.display = "inline";
     numbersTwo.style.display = "inline";
     operatorDisplay.style.display = "inline";
+    answer.style.display = "inline";
 }
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -157,26 +160,41 @@ function clearDisplay() {
 //------------------------------------------------------
 // MATH BELOW
 
+let finalAnswer;
 
-
-//-------------------------------------------------- operatorSymbol changes it's string value to the first if statement once you click the equals sign....
 operate.addEventListener('click', displayAnswer);
-
-
 
 function displayAnswer(a, b) {
     a = Number(numbStringOne);
     b = Number(numbStringThree);
-    
+    numbersTwo.style.display = "none";
+
     if (operatorSymbol == " + ") {
-        console.log(a + b);
-    }else if (operatorSymbol == " - ") {
-        console.log(a - b);
-    }else if (operatorSymbol == " x ") {
-        console.log(a * b);
-    }else if (operatorSymbol == " / ") {
-        console.log(a / b);
+        let total = (a + b);
+        finalAnswer = total.toString();
+    } else if (operatorSymbol == " - ") {
+        let total = (a - b);
+        finalAnswer = total.toString();
+    } else if (operatorSymbol == " x ") {
+        let total = (a * b);
+        finalAnswer = total.toString();
+    } else if (operatorSymbol == " / ") {
+        let total = (a / b);
+        finalAnswer = total.toString();
     }
+
+
+//----------------------------------------------------
+    
+    if (finalAnswer.length <= 12) {
+        answer.innerHTML = finalAnswer;
+    }
+    else {
+        finalAnswer = finalAnswer.substring(0, 12);
+        answer.innerHTML = finalAnswer;
+    }
+
+
 
 }
 
